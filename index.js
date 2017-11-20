@@ -18389,7 +18389,7 @@ function Content(_ref) {
   return _react2.default.createElement(
     'div',
     { style: { background: 'linear-gradient(to bottom, #fafafa 0%,#c6c6c6 50%,#f3f3f3 100%)' } },
-    _react2.default.createElement('div', { style: { height: '1000px' } }),
+    _react2.default.createElement('div', { style: { height: '100vh' } }),
     _react2.default.createElement(
       _reactLazilyRender2.default,
       { key: isWindow ? 'window' : 'container', onRender: onRender },
@@ -18405,7 +18405,7 @@ function Content(_ref) {
         );
       }
     ),
-    _react2.default.createElement('div', { style: { height: '1000px' } })
+    _react2.default.createElement('div', { style: { height: '100vh' } })
   );
 }
 
@@ -18635,7 +18635,7 @@ var LazilyRender = function (_React$Component) {
     key: 'container',
     get: function get() {
       var container = (0, _scrollparent2.default)(this.element);
-      if (container === document.documentElement) {
+      if (container === document.scrollingElement || container === document.documentElement) {
         return window;
       } else {
         return container;
