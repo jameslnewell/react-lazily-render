@@ -5,6 +5,9 @@
     },
     "esnext": {
       "presets": [["env", {"modules": false}], "react", "stage-0", "flow"]
+    },
+    "test": {
+      "presets": ["env", "react", "stage-0", "flow"]
     }
   }
 }
