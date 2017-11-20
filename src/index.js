@@ -105,5 +105,4 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
 }
 
 // TODO:
-// - shouldComponentUpdate => false (when hasBeenScrolledIntoView) -> check changing children still works
 // - test get*Bounds() fns
