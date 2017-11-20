@@ -1,0 +1,10 @@
+{
+  "env": {
+    "es5": {
+      "presets": ["env", "react", "stage-0", "flow"]
+    },
+    "esnext": {
+      "presets": [["env", {"modules": false}], "react", "stage-0", "flow"]
+    }
+  }
+}
