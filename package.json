@@ -1,6 +1,17 @@
 {
   "name": "react-lazily-render",
-  "version": "0.0.4",
+  "version": "0.0.5",
+  "description": "Lazily render react components",
+  "keywords": [
+    "react",
+    "lazy-load",
+    "react-lazy-load",
+    "lazy",
+    "load",
+    "delay",
+    "expensive",
+    "performance"
+  ],
   "main": "dist/es5/index.js",
   "jsnext:main": "dist/esnext/index.js",
   "types": "./dist/index.d.ts",

@@ -25,6 +25,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'react-lazily-render',
       filename: './index.html',
       templateContent: '<div id="app"/>'
     })

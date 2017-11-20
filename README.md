@@ -1,6 +1,6 @@
 # react-lazily-render
 
-Lazily render components.
+Lazily render react components.
 
 Delay mounting expensive components until a placeholder component has been scrolled into view.
 
@@ -11,6 +11,8 @@ npm install --save react-lazily-render
 ```
 
 # Usage
+
+[Example](https://jameslnewell.github.io/react-lazily-render) ([source](https://github.com/jameslnewell/react-lazily-render/blob/master/example/App.js#L8))
 
 ```js
 import React from 'react';
@@ -28,5 +30,3 @@ import LazyRender from 'react-lazily-render';
 </div>
 
 ```
-
-[Example](https://jameslnewell.github.io/react-lazily-render)
