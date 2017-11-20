@@ -27,7 +27,7 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
 
   get container(): ?HTMLElement | ?Window {
     const container = scrollParent(this.element);
-    if (container === document.documentElement) {
+    if (container === document.scrollingElement || container === document.documentElement) {
       return window;
     } else {
       return container;

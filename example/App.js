@@ -4,14 +4,14 @@ import LazilyRender from 'react-lazily-render';
 function Content({isWindow, onRender}) {
   return (
     <div style={{background: 'linear-gradient(to bottom, #fafafa 0%,#c6c6c6 50%,#f3f3f3 100%)'}}>
-      <div style={{height: '1000px'}}/>
+      <div style={{height: '100vh'}}/>
       <LazilyRender key={isWindow ? 'window' : 'container'} onRender={onRender}>
         {render => render
           ? <div style={{width: '300px', height: '150px', backgroundColor: 'green'}}>loaded!</div>
           : <div style={{width: '300px', height: '150px', backgroundColor: 'pink'}}>loading...</div>
         }
       </LazilyRender>
-      <div style={{height: '1000px'}}/>
+      <div style={{height: '100vh'}}/>
     </div>
   );
 }
