@@ -28,3 +28,5 @@ import LazyRender from 'react-lazily-render';
 </div>
 
 ```
+
+[Example](https://jameslnewell.github.io/react-lazily-render)

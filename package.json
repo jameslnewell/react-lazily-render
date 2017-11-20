@@ -1,6 +1,6 @@
 {
   "name": "react-lazily-render",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/es5/index.js",
   "jsnext:main": "dist/esnext/index.js",
   "types": "./dist/index.d.ts",
@@ -9,9 +9,11 @@
     "dist/es5",
     "dist/esnext"
   ],
+  "repository": "jameslnewell/react-lazily-render",
   "dependencies": {
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "^0.59.0",
+    "gh-pages": "^1.1.0",
     "lodash": "^4.17.4",
     "scrollparent": "^2.0.1"
   },
@@ -43,9 +45,11 @@
     "build:types": "cp ./src/index.d.ts ./dist/index.d.ts",
     "build:example": "BABEL_ENV=es5 webpack",
     "build": "yarn run build:es5 && yarn run build:esnext && yarn run build:example",
+    "deploy": "gh-pages -d ./dist/example",
     "watch:example": "BABEL_ENV=es5 webpack-dev-server",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepublishOnly": "npm run clean && yarn run test && yarn run build"
+    "prepublishOnly": "yarn run clean && yarn run test && yarn run build",
+    "postpublish": "yarn run deploy"
   }
 }
