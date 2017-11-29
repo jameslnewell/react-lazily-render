@@ -1,6 +1,6 @@
 {
   "name": "react-lazily-render",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Lazily render react components",
   "keywords": [
     "react",
@@ -22,9 +22,6 @@
   ],
   "repository": "jameslnewell/react-lazily-render",
   "dependencies": {
-    "babel-preset-flow": "^6.23.0",
-    "flow-bin": "^0.59.0",
-    "gh-pages": "^1.1.0",
     "lodash": "^4.17.4",
     "scrollparent": "^2.0.1"
   },
@@ -34,10 +31,13 @@
     "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
+    "flow-bin": "^0.59.0",
+    "gh-pages": "^1.1.0",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^21.2.1",
     "jest-enzyme": "^4.0.1",
@@ -62,5 +62,6 @@
     "test:watch": "jest --watch",
     "prepublishOnly": "yarn run clean && yarn run test && yarn run build",
     "postpublish": "yarn run deploy"
-  }
+  },
+  "license": "MIT"
 }
