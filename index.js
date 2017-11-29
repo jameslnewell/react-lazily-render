@@ -18647,7 +18647,6 @@ var LazilyRender = function (_React$Component) {
 }(React.Component);
 
 // TODO:
-// - shouldComponentUpdate => false (when hasBeenScrolledIntoView) -> check changing children still works
 // - test get*Bounds() fns
 
 
