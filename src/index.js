@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import throttle from 'lodash/throttle';
+import rafSchedule from 'raf-schd';
 import scrollParent from 'scrollparent';
 import {type Bounds, type Window} from './types';
 import getViewportBounds from './utils/getViewportBounds';
@@ -54,7 +54,7 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
     window.removeEventListener('resize', this.update);
   }
 
-  update = throttle(() => {
+  update = rafSchedule(() => {
     const elementBounds = this.getElementBounds();
     const viewportBounds = this.getViewportBounds();
 
@@ -77,7 +77,7 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
       );
     }
 
-  }, 16)
+  })
 
   handleMount = (element: ?HTMLElement) => {
     this.element = element;
