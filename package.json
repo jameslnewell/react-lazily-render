@@ -1,6 +1,6 @@
 {
   "name": "react-lazily-render",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Lazily render react components",
   "keywords": [
     "react",
@@ -54,7 +54,7 @@
     "build:esnext": "BABEL_ENV=esnext babel ./src -d ./dist/esnext --ignore .test.js",
     "build:types": "cp ./src/index.d.ts ./dist/index.d.ts",
     "build:example": "BABEL_ENV=es5 webpack",
-    "build": "yarn run build:es5 && yarn run build:esnext && yarn run build:example",
+    "build": "yarn run build:es5 && yarn run build:esnext && yarn run build:types && yarn run build:example",
     "deploy": "gh-pages -d ./dist/example",
     "dev": "BABEL_ENV=es5 webpack-dev-server",
     "test": "jest",
