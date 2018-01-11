@@ -46,6 +46,10 @@ import LazyRender from 'react-lazily-render';
 
 The `className` applied to the wrapping element.
 
+### offset
+
+> `number | {top?: number, right?: number, bottom?: number, left?: number}`
+
 #### placeholder
 
 > `React.Node`
@@ -60,7 +64,7 @@ Rendered when the component has been scrolled into view.
 
 #### children
 
-> `(hasBeenScrolledIntoView: boolean) => React.Node`
+> `(render: boolean) => React.Node`
 
 Called to render something depending on whether the component has been scrolled into view.
 

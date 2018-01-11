@@ -4,9 +4,10 @@ declare module 'react-lazily-render' {
 
   export interface LazilyRenderProps {
     className?: string;
+    offset?: number | {top?: number, right?: number, bottom?: number, left?: number};
     placeholder?: React.ReactNode;
     content?: React.ReactNode;
-    children?: (hasBeenScrolledIntoView: boolean) => React.ReactNode;
+    children?: (render: boolean) => React.ReactNode;
     onRender?: () => void;
   }
 

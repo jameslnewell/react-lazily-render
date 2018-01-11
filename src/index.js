@@ -5,10 +5,12 @@ import scrollParent from 'scrollparent';
 import {type Bounds, type Window} from './types';
 import getViewportBounds from './utils/getViewportBounds';
 import getElementBounds from './utils/getElementBounds';
+import convertOffsetToBounds from './utils/convertOffsetToBounds';
 import isElementInViewport from './utils/isElementInViewport'
 
 export type LazilyRenderProps = {
   className?: string;
+  offset?: number | {top?: number, right?: number, bottom?: number, left?: number};
   placeholder?: React.Node;
   content?: React.Node;
   children?: (hasBeenScrolledIntoView: boolean) => React.Node;
@@ -44,6 +46,11 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
     return getElementBounds(this.element);
   }
 
+  getOffsetBounds(): ?Bounds {
+    const {offset} = this.props;
+    return convertOffsetToBounds(offset);
+  }
+
   startListening() {
     const container = this.container;
     if (container) container.addEventListener('scroll', this.update);
@@ -59,12 +66,13 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
   update = rafSchedule(() => {
     const elementBounds = this.getElementBounds();
     const viewportBounds = this.getViewportBounds();
+    const offsetBounds = this.getOffsetBounds();
 
     if (!elementBounds || !viewportBounds) {
       return;
     }
 
-    if (isElementInViewport(elementBounds, viewportBounds)) {
+    if (isElementInViewport(elementBounds, viewportBounds, offsetBounds)) {
       this.stopListening();
       this.setState(
         {
