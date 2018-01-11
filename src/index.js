@@ -13,7 +13,7 @@ export type LazilyRenderProps = {
   offset?: number | {top?: number, right?: number, bottom?: number, left?: number};
   placeholder?: React.Node;
   content?: React.Node;
-  children?: (hasBeenScrolledIntoView: boolean) => React.Node;
+  children?: (render: boolean) => React.Node;
   onRender?: () => void;
 };
 

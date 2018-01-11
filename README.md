@@ -50,6 +50,10 @@ The `className` applied to the wrapping element.
 
 > `number | {top?: number, right?: number, bottom?: number, left?: number}`
 
+An offset applied to the element for calculating whether the component has been scrolled into view.
+
+You can specify individual values for each side, or a single value used for all sides.
+
 #### placeholder
 
 > `React.Node`
