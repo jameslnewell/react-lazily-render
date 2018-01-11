@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 19);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -303,15 +303,22 @@ module.exports = emptyFunction;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(20);
+  module.exports = __webpack_require__(17);
 } else {
-  module.exports = __webpack_require__(21);
+  module.exports = __webpack_require__(18);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -408,7 +415,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -430,13 +437,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = emptyObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
 
 /***/ }),
 /* 6 */
@@ -569,43 +569,6 @@ module.exports = warning;
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject(value) {
-  var type = typeof value;
-  return value != null && (type == 'object' || type == 'function');
-}
-
-module.exports = isObject;
-
-
-/***/ }),
-/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -621,7 +584,7 @@ module.exports = isObject;
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(6);
   var warning = __webpack_require__(7);
-  var ReactPropTypesSecret = __webpack_require__(22);
+  var ReactPropTypesSecret = __webpack_require__(19);
   var loggedTypeFailures = {};
 }
 
@@ -672,7 +635,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -711,7 +674,7 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -792,7 +755,7 @@ module.exports = EventListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -834,7 +797,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -905,7 +868,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -920,7 +883,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(25);
+var isTextNode = __webpack_require__(22);
 
 /*eslint-disable no-bitwise */
 
@@ -948,7 +911,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -978,34 +941,7 @@ function focusNode(node) {
 module.exports = focusNode;
 
 /***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var freeGlobal = __webpack_require__(37);
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-module.exports = root;
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var root = __webpack_require__(16);
-
-/** Built-in value references. */
-var Symbol = root.Symbol;
-
-module.exports = Symbol;
-
-
-/***/ }),
-/* 18 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1016,7 +952,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = getElementBounds;
 
-__webpack_require__(5);
+__webpack_require__(3);
 
 function getElementBounds(element) {
   if (!element) {
@@ -1032,7 +968,7 @@ function getElementBounds(element) {
 }
 
 /***/ }),
-/* 19 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1042,11 +978,11 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(23);
+var _reactDom = __webpack_require__(20);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = __webpack_require__(32);
+var _App = __webpack_require__(29);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -1055,7 +991,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app'));
 
 /***/ }),
-/* 20 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1067,7 +1003,7 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var m=__webpack_require__(3),n=__webpack_require__(4),p=__webpack_require__(1);
+var m=__webpack_require__(4),n=__webpack_require__(5),p=__webpack_require__(1);
 function q(a){for(var b=arguments.length-1,e="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)e+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(e+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var r={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function t(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||r}t.prototype.isReactComponent={};t.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?q("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};t.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function u(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||r}function v(){}v.prototype=t.prototype;var w=u.prototype=new v;w.constructor=u;m(w,t.prototype);w.isPureReactComponent=!0;function x(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||r}var y=x.prototype=new v;y.constructor=x;m(y,t.prototype);y.unstable_isAsyncReactComponent=!0;y.render=function(){return this.props.children};
@@ -1084,7 +1020,7 @@ version:"16.1.1",__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurren
 
 
 /***/ }),
-/* 21 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1103,12 +1039,12 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var _assign = __webpack_require__(3);
+var _assign = __webpack_require__(4);
 var invariant = __webpack_require__(6);
-var emptyObject = __webpack_require__(4);
+var emptyObject = __webpack_require__(5);
 var warning = __webpack_require__(7);
 var emptyFunction = __webpack_require__(1);
-var checkPropTypes = __webpack_require__(9);
+var checkPropTypes = __webpack_require__(8);
 
 // TODO: this is special because it gets imported during build.
 
@@ -2435,7 +2371,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 22 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2454,7 +2390,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 23 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2492,15 +2428,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(24);
+  module.exports = __webpack_require__(21);
 } else {
-  module.exports = __webpack_require__(27);
+  module.exports = __webpack_require__(24);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2515,7 +2451,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(2),m=__webpack_require__(10),A=__webpack_require__(3),B=__webpack_require__(1),ca=__webpack_require__(11),da=__webpack_require__(12),ea=__webpack_require__(13),ha=__webpack_require__(14),ia=__webpack_require__(15),C=__webpack_require__(4);
+var aa=__webpack_require__(2),m=__webpack_require__(9),A=__webpack_require__(4),B=__webpack_require__(1),ca=__webpack_require__(10),da=__webpack_require__(11),ea=__webpack_require__(12),ha=__webpack_require__(13),ia=__webpack_require__(14),C=__webpack_require__(5);
 function D(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:D("227");
 var la={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function qa(a,b){return(a&b)===b}
 var ra={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ra,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){sa.hasOwnProperty(f)?D("48",f):void 0;var g=f.toLowerCase(),k=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:qa(k,b.MUST_USE_PROPERTY),
@@ -2734,7 +2670,7 @@ Z.injectIntoDevTools({findFiberByHostInstance:qb,bundleType:0,version:"16.1.1",r
 
 
 /***/ }),
-/* 25 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2749,7 +2685,7 @@ Z.injectIntoDevTools({findFiberByHostInstance:qb,bundleType:0,version:"16.1.1",r
  * @typechecks
  */
 
-var isNode = __webpack_require__(26);
+var isNode = __webpack_require__(23);
 
 /**
  * @param {*} object The object to check.
@@ -2762,7 +2698,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 26 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2790,7 +2726,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 27 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2812,18 +2748,18 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(2);
 var invariant = __webpack_require__(6);
 var warning = __webpack_require__(7);
-var ExecutionEnvironment = __webpack_require__(10);
-var _assign = __webpack_require__(3);
+var ExecutionEnvironment = __webpack_require__(9);
+var _assign = __webpack_require__(4);
 var emptyFunction$1 = __webpack_require__(1);
-var EventListener = __webpack_require__(11);
-var getActiveElement = __webpack_require__(12);
-var shallowEqual = __webpack_require__(13);
-var containsNode = __webpack_require__(14);
-var focusNode = __webpack_require__(15);
-var emptyObject = __webpack_require__(4);
-var checkPropTypes = __webpack_require__(9);
-var hyphenateStyleName = __webpack_require__(28);
-var camelizeStyleName = __webpack_require__(30);
+var EventListener = __webpack_require__(10);
+var getActiveElement = __webpack_require__(11);
+var shallowEqual = __webpack_require__(12);
+var containsNode = __webpack_require__(13);
+var focusNode = __webpack_require__(14);
+var emptyObject = __webpack_require__(5);
+var checkPropTypes = __webpack_require__(8);
+var hyphenateStyleName = __webpack_require__(25);
+var camelizeStyleName = __webpack_require__(27);
 
 /**
  * WARNING: DO NOT manually require this module.
@@ -18198,7 +18134,7 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 28 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18213,7 +18149,7 @@ module.exports = reactDom;
 
 
 
-var hyphenate = __webpack_require__(29);
+var hyphenate = __webpack_require__(26);
 
 var msPattern = /^ms-/;
 
@@ -18240,7 +18176,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 29 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18276,7 +18212,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 30 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18291,7 +18227,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(31);
+var camelize = __webpack_require__(28);
 
 var msPattern = /^-ms-/;
 
@@ -18319,7 +18255,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 31 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18354,7 +18290,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 32 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18370,7 +18306,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactLazilyRender = __webpack_require__(33);
+var _reactLazilyRender = __webpack_require__(30);
 
 var _reactLazilyRender2 = _interopRequireDefault(_reactLazilyRender);
 
@@ -18384,15 +18320,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function Content(_ref) {
   var isWindow = _ref.isWindow,
+      offset = _ref.offset,
       onRender = _ref.onRender;
 
   return _react2.default.createElement(
     'div',
     { style: { background: 'linear-gradient(to bottom, #fafafa 0%,#c6c6c6 50%,#f3f3f3 100%)' } },
-    _react2.default.createElement('div', { style: { height: '100vh' } }),
+    _react2.default.createElement('div', { style: { height: '125vh' } }),
     _react2.default.createElement(
       _reactLazilyRender2.default,
-      { key: isWindow ? 'window' : 'container', onRender: onRender },
+      { key: isWindow ? 'window' : 'container', offset: offset, onRender: onRender },
       function (render) {
         return render ? _react2.default.createElement(
           'div',
@@ -18405,7 +18342,7 @@ function Content(_ref) {
         );
       }
     ),
-    _react2.default.createElement('div', { style: { height: '100vh' } })
+    _react2.default.createElement('div', { style: { height: '125vh' } })
   );
 }
 
@@ -18425,7 +18362,10 @@ var App = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref2, [this].concat(args))), _this), _this.state = {
       isWindow: true,
-      isRendered: false
+      isRendered: false,
+      offset: undefined
+    }, _this.handleMountContainer = function (el) {
+      _this.containerEl = el;
     }, _this.handleToggle = function () {
       _this.setState(function (_ref3) {
         var isWindow = _ref3.isWindow;
@@ -18438,6 +18378,21 @@ var App = function (_React$Component) {
       _this.setState({
         isRendered: true
       });
+    }, _this.handleOffsetChange = function (event) {
+      try {
+        var offset = JSON.parse(event.target.value);
+        _this.setState({ offset: offset });
+      } catch (e) {}
+    }, _this.handleJumpToBottom = function () {
+      var isWindow = _this.state.isWindow;
+
+      if (isWindow) {
+        window.scrollTo(0, 99999);
+      } else {
+        if (_this.containerEl) {
+          _this.containerEl.scrollTo(0, 99999);
+        }
+      }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -18446,7 +18401,8 @@ var App = function (_React$Component) {
     value: function render() {
       var _state = this.state,
           isWindow = _state.isWindow,
-          isRendered = _state.isRendered;
+          isRendered = _state.isRendered,
+          offset = _state.offset;
 
 
       return _react2.default.createElement(
@@ -18470,6 +18426,21 @@ var App = function (_React$Component) {
           _react2.default.createElement('input', { type: 'radio', name: 'container', value: 'container', checked: !isWindow, onChange: this.handleToggle }),
           'Scrollable container'
         ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'label',
+          null,
+          'Offset: ',
+          _react2.default.createElement('input', { defaultValue: '0', onChange: this.handleOffsetChange, style: { textAlign: 'right' } })
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.handleJumpToBottom },
+          '\u26F9\uD83C\uDFFE Jump to bottom'
+        ),
         _react2.default.createElement(
           'h4',
           null,
@@ -18478,10 +18449,10 @@ var App = function (_React$Component) {
           ' ',
           isRendered ? '✅' : '⬇'
         ),
-        isWindow ? _react2.default.createElement(Content, { isWindow: isWindow, onRender: this.handleRender }) : _react2.default.createElement(
+        isWindow ? _react2.default.createElement(Content, { isWindow: isWindow, offset: offset, onRender: this.handleRender }) : _react2.default.createElement(
           'div',
-          { style: { overflow: 'auto', height: 'calc(100vh - 175px)', border: '1px solid #ccc' } },
-          _react2.default.createElement(Content, { isWindow: isWindow, onRender: this.handleRender })
+          { ref: this.handleMountContainer, style: { overflow: 'auto', height: 'calc(100vh - 250px)', border: '1px solid #ccc' } },
+          _react2.default.createElement(Content, { isWindow: isWindow, offset: offset, onRender: this.handleRender })
         )
       );
     }
@@ -18493,7 +18464,7 @@ var App = function (_React$Component) {
 exports.default = App;
 
 /***/ }),
-/* 33 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18509,25 +18480,29 @@ var _react = __webpack_require__(2);
 
 var React = _interopRequireWildcard(_react);
 
-var _throttle = __webpack_require__(34);
+var _rafSchd = __webpack_require__(31);
 
-var _throttle2 = _interopRequireDefault(_throttle);
+var _rafSchd2 = _interopRequireDefault(_rafSchd);
 
-var _scrollparent = __webpack_require__(45);
+var _scrollparent = __webpack_require__(32);
 
 var _scrollparent2 = _interopRequireDefault(_scrollparent);
 
-__webpack_require__(5);
+__webpack_require__(3);
 
-var _getViewportBounds2 = __webpack_require__(46);
+var _getViewportBounds2 = __webpack_require__(33);
 
 var _getViewportBounds3 = _interopRequireDefault(_getViewportBounds2);
 
-var _getElementBounds2 = __webpack_require__(18);
+var _getElementBounds2 = __webpack_require__(15);
 
 var _getElementBounds3 = _interopRequireDefault(_getElementBounds2);
 
-var _isElementInViewport = __webpack_require__(47);
+var _convertOffsetToBounds = __webpack_require__(34);
+
+var _convertOffsetToBounds2 = _interopRequireDefault(_convertOffsetToBounds);
+
+var _isElementInViewport = __webpack_require__(35);
 
 var _isElementInViewport2 = _interopRequireDefault(_isElementInViewport);
 
@@ -18557,15 +18532,16 @@ var LazilyRender = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LazilyRender.__proto__ || Object.getPrototypeOf(LazilyRender)).call.apply(_ref, [this].concat(args))), _this), _this.element = undefined, _this.state = {
       hasBeenScrolledIntoView: false
-    }, _this.update = (0, _throttle2.default)(function () {
+    }, _this.update = (0, _rafSchd2.default)(function () {
       var elementBounds = _this.getElementBounds();
       var viewportBounds = _this.getViewportBounds();
+      var offsetBounds = _this.getOffsetBounds();
 
       if (!elementBounds || !viewportBounds) {
         return;
       }
 
-      if ((0, _isElementInViewport2.default)(elementBounds, viewportBounds)) {
+      if ((0, _isElementInViewport2.default)(elementBounds, viewportBounds, offsetBounds)) {
         _this.stopListening();
         _this.setState({
           hasBeenScrolledIntoView: true
@@ -18577,7 +18553,7 @@ var LazilyRender = function (_React$Component) {
           }
         });
       }
-    }, 16), _this.handleMount = function (element) {
+    }), _this.handleMount = function (element) {
       _this.element = element;
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -18591,6 +18567,13 @@ var LazilyRender = function (_React$Component) {
     key: 'getElementBounds',
     value: function getElementBounds() {
       return (0, _getElementBounds3.default)(this.element);
+    }
+  }, {
+    key: 'getOffsetBounds',
+    value: function getOffsetBounds() {
+      var offset = this.props.offset;
+
+      return (0, _convertOffsetToBounds2.default)(offset);
     }
   }, {
     key: 'startListening',
@@ -18618,17 +18601,38 @@ var LazilyRender = function (_React$Component) {
       this.stopListening();
     }
   }, {
-    key: 'render',
-    value: function render() {
+    key: 'renderChildren',
+    value: function renderChildren() {
       var _props = this.props,
-          className = _props.className,
+          placeholder = _props.placeholder,
+          content = _props.content,
           children = _props.children;
       var hasBeenScrolledIntoView = this.state.hasBeenScrolledIntoView;
+
+
+      if (!hasBeenScrolledIntoView && placeholder) {
+        return placeholder;
+      }
+
+      if (hasBeenScrolledIntoView && content) {
+        return content;
+      }
+
+      if (children) {
+        return children(hasBeenScrolledIntoView);
+      }
+
+      return null;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var className = this.props.className;
 
       return React.createElement(
         'div',
         { ref: this.handleMount, className: className },
-        children(hasBeenScrolledIntoView)
+        this.renderChildren()
       );
     }
   }, {
@@ -18646,606 +18650,60 @@ var LazilyRender = function (_React$Component) {
   return LazilyRender;
 }(React.Component);
 
-// TODO:
-// - test get*Bounds() fns
-
-
 exports.default = LazilyRender;
 
 /***/ }),
-/* 34 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var debounce = __webpack_require__(35),
-    isObject = __webpack_require__(8);
-
-/** Error message constants. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/**
- * Creates a throttled function that only invokes `func` at most once per
- * every `wait` milliseconds. The throttled function comes with a `cancel`
- * method to cancel delayed `func` invocations and a `flush` method to
- * immediately invoke them. Provide `options` to indicate whether `func`
- * should be invoked on the leading and/or trailing edge of the `wait`
- * timeout. The `func` is invoked with the last arguments provided to the
- * throttled function. Subsequent calls to the throttled function return the
- * result of the last `func` invocation.
- *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is
- * invoked on the trailing edge of the timeout only if the throttled function
- * is invoked more than once during the `wait` timeout.
- *
- * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
- * until to the next tick, similar to `setTimeout` with a timeout of `0`.
- *
- * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
- * for details over the differences between `_.throttle` and `_.debounce`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to throttle.
- * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=true]
- *  Specify invoking on the leading edge of the timeout.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new throttled function.
- * @example
- *
- * // Avoid excessively updating the position while scrolling.
- * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
- *
- * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
- * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
- * jQuery(element).on('click', throttled);
- *
- * // Cancel the trailing throttled invocation.
- * jQuery(window).on('popstate', throttled.cancel);
- */
-function throttle(func, wait, options) {
-  var leading = true,
-      trailing = true;
-
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  if (isObject(options)) {
-    leading = 'leading' in options ? !!options.leading : leading;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
-  return debounce(func, wait, {
-    'leading': leading,
-    'maxWait': wait,
-    'trailing': trailing
-  });
-}
-
-module.exports = throttle;
+"use strict";
 
 
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var isObject = __webpack_require__(8),
-    now = __webpack_require__(36),
-    toNumber = __webpack_require__(39);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-/** Error message constants. */
-var FUNC_ERROR_TEXT = 'Expected a function';
+exports.default = function (fn) {
+  var lastArgs = [];
+  var frameId = null;
 
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMax = Math.max,
-    nativeMin = Math.min;
-
-/**
- * Creates a debounced function that delays invoking `func` until after `wait`
- * milliseconds have elapsed since the last time the debounced function was
- * invoked. The debounced function comes with a `cancel` method to cancel
- * delayed `func` invocations and a `flush` method to immediately invoke them.
- * Provide `options` to indicate whether `func` should be invoked on the
- * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
- * with the last arguments provided to the debounced function. Subsequent
- * calls to the debounced function return the result of the last `func`
- * invocation.
- *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is
- * invoked on the trailing edge of the timeout only if the debounced function
- * is invoked more than once during the `wait` timeout.
- *
- * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
- * until to the next tick, similar to `setTimeout` with a timeout of `0`.
- *
- * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
- * for details over the differences between `_.debounce` and `_.throttle`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to debounce.
- * @param {number} [wait=0] The number of milliseconds to delay.
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=false]
- *  Specify invoking on the leading edge of the timeout.
- * @param {number} [options.maxWait]
- *  The maximum time `func` is allowed to be delayed before it's invoked.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new debounced function.
- * @example
- *
- * // Avoid costly calculations while the window size is in flux.
- * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
- *
- * // Invoke `sendMail` when clicked, debouncing subsequent calls.
- * jQuery(element).on('click', _.debounce(sendMail, 300, {
- *   'leading': true,
- *   'trailing': false
- * }));
- *
- * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
- * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
- * var source = new EventSource('/stream');
- * jQuery(source).on('message', debounced);
- *
- * // Cancel the trailing debounced invocation.
- * jQuery(window).on('popstate', debounced.cancel);
- */
-function debounce(func, wait, options) {
-  var lastArgs,
-      lastThis,
-      maxWait,
-      result,
-      timerId,
-      lastCallTime,
-      lastInvokeTime = 0,
-      leading = false,
-      maxing = false,
-      trailing = true;
-
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  wait = toNumber(wait) || 0;
-  if (isObject(options)) {
-    leading = !!options.leading;
-    maxing = 'maxWait' in options;
-    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
-
-  function invokeFunc(time) {
-    var args = lastArgs,
-        thisArg = lastThis;
-
-    lastArgs = lastThis = undefined;
-    lastInvokeTime = time;
-    result = func.apply(thisArg, args);
-    return result;
-  }
-
-  function leadingEdge(time) {
-    // Reset any `maxWait` timer.
-    lastInvokeTime = time;
-    // Start the timer for the trailing edge.
-    timerId = setTimeout(timerExpired, wait);
-    // Invoke the leading edge.
-    return leading ? invokeFunc(time) : result;
-  }
-
-  function remainingWait(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime,
-        result = wait - timeSinceLastCall;
-
-    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
-  }
-
-  function shouldInvoke(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime;
-
-    // Either this is the first call, activity has stopped and we're at the
-    // trailing edge, the system time has gone backwards and we're treating
-    // it as the trailing edge, or we've hit the `maxWait` limit.
-    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
-      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
-  }
-
-  function timerExpired() {
-    var time = now();
-    if (shouldInvoke(time)) {
-      return trailingEdge(time);
+  var wrapperFn = function wrapperFn() {
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
-    // Restart the timer.
-    timerId = setTimeout(timerExpired, remainingWait(time));
-  }
 
-  function trailingEdge(time) {
-    timerId = undefined;
+    lastArgs = args;
 
-    // Only invoke if we have `lastArgs` which means `func` has been
-    // debounced at least once.
-    if (trailing && lastArgs) {
-      return invokeFunc(time);
+    if (frameId) {
+      return frameId;
     }
-    lastArgs = lastThis = undefined;
-    return result;
-  }
 
-  function cancel() {
-    if (timerId !== undefined) {
-      clearTimeout(timerId);
+    frameId = requestAnimationFrame(function () {
+      frameId = null;
+      fn.apply(undefined, _toConsumableArray(lastArgs));
+    });
+
+    return frameId;
+  };
+
+  wrapperFn.cancel = function () {
+    if (!frameId) {
+      return;
     }
-    lastInvokeTime = 0;
-    lastArgs = lastCallTime = lastThis = timerId = undefined;
-  }
 
-  function flush() {
-    return timerId === undefined ? result : trailingEdge(now());
-  }
+    cancelAnimationFrame(frameId);
+    frameId = null;
+  };
 
-  function debounced() {
-    var time = now(),
-        isInvoking = shouldInvoke(time);
+  var resultFn = wrapperFn;
 
-    lastArgs = arguments;
-    lastThis = this;
-    lastCallTime = time;
-
-    if (isInvoking) {
-      if (timerId === undefined) {
-        return leadingEdge(lastCallTime);
-      }
-      if (maxing) {
-        // Handle invocations in a tight loop.
-        timerId = setTimeout(timerExpired, wait);
-        return invokeFunc(lastCallTime);
-      }
-    }
-    if (timerId === undefined) {
-      timerId = setTimeout(timerExpired, wait);
-    }
-    return result;
-  }
-  debounced.cancel = cancel;
-  debounced.flush = flush;
-  return debounced;
-}
-
-module.exports = debounce;
-
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var root = __webpack_require__(16);
-
-/**
- * Gets the timestamp of the number of milliseconds that have elapsed since
- * the Unix epoch (1 January 1970 00:00:00 UTC).
- *
- * @static
- * @memberOf _
- * @since 2.4.0
- * @category Date
- * @returns {number} Returns the timestamp.
- * @example
- *
- * _.defer(function(stamp) {
- *   console.log(_.now() - stamp);
- * }, _.now());
- * // => Logs the number of milliseconds it took for the deferred invocation.
- */
-var now = function() {
-  return root.Date.now();
+  return resultFn;
 };
 
-module.exports = now;
-
-
 /***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
-
-module.exports = freeGlobal;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38)))
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(8),
-    isSymbol = __webpack_require__(40);
-
-/** Used as references for various `Number` constants. */
-var NAN = 0 / 0;
-
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
-
-/** Used to detect bad signed hexadecimal string values. */
-var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-/** Used to detect binary string values. */
-var reIsBinary = /^0b[01]+$/i;
-
-/** Used to detect octal string values. */
-var reIsOctal = /^0o[0-7]+$/i;
-
-/** Built-in method references without a dependency on `root`. */
-var freeParseInt = parseInt;
-
-/**
- * Converts `value` to a number.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to process.
- * @returns {number} Returns the number.
- * @example
- *
- * _.toNumber(3.2);
- * // => 3.2
- *
- * _.toNumber(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toNumber(Infinity);
- * // => Infinity
- *
- * _.toNumber('3.2');
- * // => 3.2
- */
-function toNumber(value) {
-  if (typeof value == 'number') {
-    return value;
-  }
-  if (isSymbol(value)) {
-    return NAN;
-  }
-  if (isObject(value)) {
-    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = isObject(other) ? (other + '') : other;
-  }
-  if (typeof value != 'string') {
-    return value === 0 ? value : +value;
-  }
-  value = value.replace(reTrim, '');
-  var isBinary = reIsBinary.test(value);
-  return (isBinary || reIsOctal.test(value))
-    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
-    : (reIsBadHex.test(value) ? NAN : +value);
-}
-
-module.exports = toNumber;
-
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseGetTag = __webpack_require__(41),
-    isObjectLike = __webpack_require__(44);
-
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-  return typeof value == 'symbol' ||
-    (isObjectLike(value) && baseGetTag(value) == symbolTag);
-}
-
-module.exports = isSymbol;
-
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Symbol = __webpack_require__(17),
-    getRawTag = __webpack_require__(42),
-    objectToString = __webpack_require__(43);
-
-/** `Object#toString` result references. */
-var nullTag = '[object Null]',
-    undefinedTag = '[object Undefined]';
-
-/** Built-in value references. */
-var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-function baseGetTag(value) {
-  if (value == null) {
-    return value === undefined ? undefinedTag : nullTag;
-  }
-  return (symToStringTag && symToStringTag in Object(value))
-    ? getRawTag(value)
-    : objectToString(value);
-}
-
-module.exports = baseGetTag;
-
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Symbol = __webpack_require__(17);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/** Built-in value references. */
-var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-
-/**
- * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the raw `toStringTag`.
- */
-function getRawTag(value) {
-  var isOwn = hasOwnProperty.call(value, symToStringTag),
-      tag = value[symToStringTag];
-
-  try {
-    value[symToStringTag] = undefined;
-    var unmasked = true;
-  } catch (e) {}
-
-  var result = nativeObjectToString.call(value);
-  if (unmasked) {
-    if (isOwn) {
-      value[symToStringTag] = tag;
-    } else {
-      delete value[symToStringTag];
-    }
-  }
-  return result;
-}
-
-module.exports = getRawTag;
-
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports) {
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/**
- * Converts `value` to a string using `Object.prototype.toString`.
- *
- * @private
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- */
-function objectToString(value) {
-  return nativeObjectToString.call(value);
-}
-
-module.exports = objectToString;
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && typeof value == 'object';
-}
-
-module.exports = isObjectLike;
-
-
-/***/ }),
-/* 45 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
@@ -19301,7 +18759,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 46 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19337,16 +18795,16 @@ exports.default = function (container) {
   }
 };
 
-__webpack_require__(5);
+__webpack_require__(3);
 
-var _getElementBounds = __webpack_require__(18);
+var _getElementBounds = __webpack_require__(15);
 
 var _getElementBounds2 = _interopRequireDefault(_getElementBounds);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 47 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19356,11 +18814,61 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-exports.default = function (elementBounds, viewportBounds) {
-  return elementBounds.bottom >= viewportBounds.top && elementBounds.top <= viewportBounds.bottom && elementBounds.right >= viewportBounds.left && elementBounds.left <= viewportBounds.right;
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.default = function (offset) {
+
+  if (!offset) {
+    return undefined;
+  }
+
+  var offsetTop = void 0;
+  var offsetRight = void 0;
+  var offsetBottom = void 0;
+  var offsetLeft = void 0;
+
+  if ((typeof offset === 'undefined' ? 'undefined' : _typeof(offset)) === 'object') {
+    offsetTop = offset.top || 0;
+    offsetRight = offset.right || 0;
+    offsetBottom = offset.bottom || 0;
+    offsetLeft = offset.left || 0;
+  } else {
+    offsetTop = offset || 0;
+    offsetRight = offset || 0;
+    offsetBottom = offset || 0;
+    offsetLeft = offset || 0;
+  }
+
+  return {
+    top: offsetTop,
+    right: offsetRight,
+    bottom: offsetBottom,
+    left: offsetLeft
+  };
 };
 
-__webpack_require__(5);
+__webpack_require__(3);
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (elementBounds, viewportBounds, offset) {
+  var offsetTop = offset && offset.top || 0;
+  var offsetRight = offset && offset.right || 0;
+  var offsetBottom = offset && offset.bottom || 0;
+  var offsetLeft = offset && offset.left || 0;
+  return elementBounds.bottom + offsetBottom >= viewportBounds.top && elementBounds.top - offsetTop <= viewportBounds.bottom && elementBounds.right + offsetRight >= viewportBounds.left && elementBounds.left - offsetLeft <= viewportBounds.right;
+};
+
+__webpack_require__(3);
 
 /***/ })
 /******/ ]);
