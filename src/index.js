@@ -8,9 +8,11 @@ import getElementBounds from './utils/getElementBounds';
 import isElementInViewport from './utils/isElementInViewport'
 
 export type LazilyRenderProps = {
-  children: (render: boolean) => React.Node;
-  onRender?: () => void;
   className?: string;
+  placeholder?: React.Node;
+  content?: React.Node;
+  children?: (hasBeenScrolledIntoView: boolean) => React.Node;
+  onRender?: () => void;
 };
 
 export type LazilyRenderState = {
@@ -92,17 +94,32 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
     this.stopListening();
   }
 
-  render() {
-    const {className, children} = this.props;
+  renderChildren() {
+    const {placeholder, content, children} = this.props;
     const {hasBeenScrolledIntoView} = this.state;
+
+    if (!hasBeenScrolledIntoView && placeholder) {
+      return placeholder;
+    }
+
+    if (hasBeenScrolledIntoView && content) {
+      return content;
+    }
+
+    if (children) {
+      return children(hasBeenScrolledIntoView);
+    }
+
+    return null;
+  }
+
+  render() {
+    const {className} = this.props;
     return (
       <div ref={this.handleMount} className={className}>
-        {children(hasBeenScrolledIntoView)}
+        {this.renderChildren()}
       </div>
     );
   }
 
 }
-
-// TODO:
-// - test get*Bounds() fns

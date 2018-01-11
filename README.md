@@ -20,6 +20,11 @@ import LazyRender from 'react-lazily-render';
 
 <div>
   ...lots of content...
+  <LazilyRender
+    placeholder={<PlaceholderComponent/>}
+    content={<ExpensiveComponent/>}
+  />
+  ...lots of content...
   <LazilyRender>
     {render => render
       ? <ExpensiveComponent/>
@@ -35,20 +40,32 @@ import LazyRender from 'react-lazily-render';
 
 ### Properties
 
-#### children
-
-> `(render: boolean) => React.Node`
-
-Called to render either the placeholder content or the actual content.
-
 #### className
 
 > `string`
 
 The `className` applied to the wrapping element.
 
+#### placeholder
+
+> `React.Node`
+
+Rendered when the component hasn't been scrolled into view.
+
+#### content
+
+> `React.Node`
+
+Rendered when the component has been scrolled into view.
+
+#### children
+
+> `(hasBeenScrolledIntoView: boolean) => React.Node`
+
+Called to render something depending on whether the component has been scrolled into view.
+
 #### onRender
 
 > `() => void`
 
-Called when the children is visible for the first time.
+Called when the component becomes visible for the first time.
