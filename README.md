@@ -10,7 +10,7 @@ Delay mounting expensive components until a placeholder component has been scrol
 npm install --save react-lazily-render
 ```
 
-# Usage
+## Usage
 
 [Example](https://jameslnewell.github.io/react-lazily-render) ([source](https://github.com/jameslnewell/react-lazily-render/blob/master/example/App.js#L8))
 
@@ -19,14 +19,61 @@ import React from 'react';
 import LazyRender from 'react-lazily-render';
 
 <div>
-  lots of content...
+  ...lots of content...
+  <LazilyRender
+    placeholder={<PlaceholderComponent/>}
+    content={<ExpensiveComponent/>}
+  />
+  ...lots of content...
   <LazilyRender>
     {render => render
       ? <ExpensiveComponent/>
       : <PlaceholderComponent/>
     }
   </LazilyRender>
-  lots of content...
+  ...lots of content...
 </div>
 
 ```
+
+## API
+
+### Properties
+
+#### className
+
+> `string`
+
+The `className` applied to the wrapping element.
+
+### offset
+
+> `number | {top?: number, right?: number, bottom?: number, left?: number}`
+
+An offset applied to the element for calculating whether the component has been scrolled into view.
+
+You can specify individual values for each side, or a single value used for all sides.
+
+#### placeholder
+
+> `React.Node`
+
+Rendered when the component hasn't been scrolled into view.
+
+#### content
+
+> `React.Node`
+
+Rendered when the component has been scrolled into view.
+
+#### children
+
+> `(render: boolean) => React.Node`
+
+Called to render something depending on whether the component has been scrolled into view.
+
+#### onRender
+
+> `() => void`
+
+Called when the component becomes visible for the first time.

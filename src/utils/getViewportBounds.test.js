@@ -1,0 +1,4 @@
+
+describe.skip('getViewportBounds()', () => {
+  it();
+});
