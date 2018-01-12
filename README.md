@@ -1,5 +1,7 @@
 # react-lazily-render
 
+[![Build Status](https://travis-ci.org/jameslnewell/react-lazily-render.svg?branch=master)](https://travis-ci.org/jameslnewell/react-lazily-render)
+
 Lazily render react components.
 
 Delay mounting expensive components until a placeholder component has been scrolled into view.

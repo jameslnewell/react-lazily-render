@@ -59,7 +59,8 @@
     "dev": "BABEL_ENV=es5 webpack-dev-server",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepublishOnly": "yarn run clean && yarn run test && yarn run build",
+    "ci": "yarn run clean && yarn run test && yarn run build",
+    "prepublishOnly": "yarn run ci",
     "postpublish": "yarn run deploy"
   },
   "license": "MIT"
