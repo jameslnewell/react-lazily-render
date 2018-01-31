@@ -7,6 +7,7 @@ import getViewportBounds from './utils/getViewportBounds';
 import getElementBounds from './utils/getElementBounds';
 import convertOffsetToBounds from './utils/convertOffsetToBounds';
 import isElementInViewport from './utils/isElementInViewport'
+import eventListenerOptions from './utils/eventListenerOptions';
 
 export type LazilyRenderProps = {
   className?: string;
@@ -53,13 +54,13 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
 
   startListening() {
     const container = this.container;
-    if (container) container.addEventListener('scroll', this.update);
+    if (container) container.addEventListener('scroll', this.update, eventListenerOptions);
     window.addEventListener('resize', this.update);
   }
 
   stopListening() {
     const container = this.container;
-    if (container) container.removeEventListener('scroll', this.update);
+    if (container) container.removeEventListener('scroll', this.update, eventListenerOptions);
     window.removeEventListener('resize', this.update);
   }
 
