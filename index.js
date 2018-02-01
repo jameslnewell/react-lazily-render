@@ -18506,6 +18506,10 @@ var _isElementInViewport = __webpack_require__(35);
 
 var _isElementInViewport2 = _interopRequireDefault(_isElementInViewport);
 
+var _eventListenerOptions = __webpack_require__(36);
+
+var _eventListenerOptions2 = _interopRequireDefault(_eventListenerOptions);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -18579,14 +18583,14 @@ var LazilyRender = function (_React$Component) {
     key: 'startListening',
     value: function startListening() {
       var container = this.container;
-      if (container) container.addEventListener('scroll', this.update);
+      if (container) container.addEventListener('scroll', this.update, _eventListenerOptions2.default);
       window.addEventListener('resize', this.update);
     }
   }, {
     key: 'stopListening',
     value: function stopListening() {
       var container = this.container;
-      if (container) container.removeEventListener('scroll', this.update);
+      if (container) container.removeEventListener('scroll', this.update, _eventListenerOptions2.default);
       window.removeEventListener('resize', this.update);
     }
   }, {
@@ -18869,6 +18873,37 @@ exports.default = function (elementBounds, viewportBounds, offset) {
 };
 
 __webpack_require__(3);
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var isPassiveListenerSupported = function isPassiveListenerSupported() {
+  var supported = false;
+
+  try {
+    var opts = Object.defineProperty({}, 'passive', {
+      get: function get() {
+        supported = true;
+      }
+    });
+
+    window.addEventListener('test', null, opts);
+    window.removeEventListener('test', null, opts);
+  } catch (e) {}
+
+  return supported;
+};
+
+exports.default = isPassiveListenerSupported() ? {
+  passive: true
+} : undefined;
 
 /***/ })
 /******/ ]);
