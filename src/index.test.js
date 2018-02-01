@@ -4,6 +4,12 @@ import LazyRender from '.';
 import {__setViewportBounds} from './utils/getViewportBounds';
 import {__setElementBounds} from './utils/getElementBounds';
 
+jest.mock('./utils/eventListenerOptions', () => {
+  return {
+    passive: true
+  };
+});
+
 jest.mock('./utils/getViewportBounds', () => {
   let bounds = undefined;
   const getViewportBounds = () => bounds;
@@ -62,6 +68,9 @@ function getWrapper(element) {
 }
 
 describe('LazyRender', () => {
+  const placeholder = '...';
+  const content = 'Hello World!'
+  const children = 'foo bar';
 
   describe('.render()', () => {
 
@@ -97,10 +106,6 @@ describe('LazyRender', () => {
     });
 
     describe('has not been scrolled into view:', () => {
-      const placeholder = '...';
-      const content = 'Hello World!'
-      const children = 'foo bar';
-
       beforeEach(() => setupElementOutOfView());
 
       it('should render the "placeholder" when there is a "placeholder"', () => {
@@ -129,10 +134,6 @@ describe('LazyRender', () => {
     });
 
     describe('has been scrolled into view:', () => {
-      const placeholder = '...';
-      const content = 'Hello World!'
-      const children = 'foo bar';
-
       beforeEach(() => setupElementInView());
 
       it('should render the "content" when there is "content"', () => {
@@ -162,4 +163,30 @@ describe('LazyRender', () => {
 
   });
 
+  describe('Event handling', () => {
+    it('should use passive event listeners when available', () => {
+      const element = wrapper(
+        <LazyRender placeholder={placeholder}>
+          {() => children}
+        </LazyRender>
+      );
+      const instance = element.instance();
+      const addEventSpy = jest.spyOn(window, 'addEventListener');
+      const removeEventSpy = jest.spyOn(window, 'removeEventListener');
+
+      instance.startListening();
+      
+      expect(addEventSpy.mock.calls[0][0]).toEqual('scroll');
+      expect(addEventSpy.mock.calls[0][2]).toEqual({
+        passive: true
+      });
+
+      instance.stopListening();
+
+      expect(removeEventSpy.mock.calls[0][0]).toEqual('scroll');
+      expect(removeEventSpy.mock.calls[0][2]).toEqual({
+        passive: true
+      });
+    });
+  });
 });
