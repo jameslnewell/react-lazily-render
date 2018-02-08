@@ -18480,17 +18480,13 @@ var _react = __webpack_require__(2);
 
 var React = _interopRequireWildcard(_react);
 
-var _rafSchd = __webpack_require__(31);
-
-var _rafSchd2 = _interopRequireDefault(_rafSchd);
-
-var _scrollparent = __webpack_require__(32);
+var _scrollparent = __webpack_require__(31);
 
 var _scrollparent2 = _interopRequireDefault(_scrollparent);
 
 __webpack_require__(3);
 
-var _getViewportBounds2 = __webpack_require__(33);
+var _getViewportBounds2 = __webpack_require__(32);
 
 var _getViewportBounds3 = _interopRequireDefault(_getViewportBounds2);
 
@@ -18498,15 +18494,15 @@ var _getElementBounds2 = __webpack_require__(15);
 
 var _getElementBounds3 = _interopRequireDefault(_getElementBounds2);
 
-var _convertOffsetToBounds = __webpack_require__(34);
+var _convertOffsetToBounds = __webpack_require__(33);
 
 var _convertOffsetToBounds2 = _interopRequireDefault(_convertOffsetToBounds);
 
-var _isElementInViewport = __webpack_require__(35);
+var _isElementInViewport = __webpack_require__(34);
 
 var _isElementInViewport2 = _interopRequireDefault(_isElementInViewport);
 
-var _eventListenerOptions = __webpack_require__(36);
+var _eventListenerOptions = __webpack_require__(35);
 
 var _eventListenerOptions2 = _interopRequireDefault(_eventListenerOptions);
 
@@ -18534,35 +18530,54 @@ var LazilyRender = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LazilyRender.__proto__ || Object.getPrototypeOf(LazilyRender)).call.apply(_ref, [this].concat(args))), _this), _this.element = undefined, _this.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = LazilyRender.__proto__ || Object.getPrototypeOf(LazilyRender)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       hasBeenScrolledIntoView: false
-    }, _this.update = (0, _rafSchd2.default)(function () {
-      var elementBounds = _this.getElementBounds();
-      var viewportBounds = _this.getViewportBounds();
-      var offsetBounds = _this.getOffsetBounds();
+    }, _this.update = function () {
+      cancelAnimationFrame(_this.raf);
+      _this.raf = requestAnimationFrame(function () {
 
-      if (!elementBounds || !viewportBounds) {
-        return;
-      }
+        var elementBounds = _this.getElementBounds();
+        var viewportBounds = _this.getViewportBounds();
+        var offsetBounds = _this.getOffsetBounds();
 
-      if ((0, _isElementInViewport2.default)(elementBounds, viewportBounds, offsetBounds)) {
-        _this.stopListening();
-        _this.setState({
-          hasBeenScrolledIntoView: true
-        }, function () {
-          var onRender = _this.props.onRender;
+        if (!elementBounds || !viewportBounds) {
+          return;
+        }
 
-          if (onRender) {
-            onRender();
-          }
-        });
-      }
-    }), _this.handleMount = function (element) {
+        if ((0, _isElementInViewport2.default)(elementBounds, viewportBounds, offsetBounds)) {
+          _this.stopListening();
+          _this.setState({
+            hasBeenScrolledIntoView: true
+          }, function () {
+            var onRender = _this.props.onRender;
+
+            if (onRender) {
+              onRender();
+            }
+          });
+        }
+      });
+    }, _this.handleMount = function (element) {
       _this.element = element;
+      if (_this.element) {
+        _this.container = _this.getContainer();
+      } else {
+        _this.container = undefined;
+      }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(LazilyRender, [{
+    key: 'getContainer',
+    value: function getContainer() {
+      var container = (0, _scrollparent2.default)(this.element);
+      if (container === document.scrollingElement || container === document.documentElement) {
+        return window;
+      } else {
+        return container;
+      }
+    }
+  }, {
     key: 'getViewportBounds',
     value: function getViewportBounds() {
       return (0, _getViewportBounds3.default)(this.container);
@@ -18639,16 +18654,6 @@ var LazilyRender = function (_React$Component) {
         this.renderChildren()
       );
     }
-  }, {
-    key: 'container',
-    get: function get() {
-      var container = (0, _scrollparent2.default)(this.element);
-      if (container === document.scrollingElement || container === document.documentElement) {
-        return window;
-      } else {
-        return container;
-      }
-    }
   }]);
 
   return LazilyRender;
@@ -18658,56 +18663,6 @@ exports.default = LazilyRender;
 
 /***/ }),
 /* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-exports.default = function (fn) {
-  var lastArgs = [];
-  var frameId = null;
-
-  var wrapperFn = function wrapperFn() {
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    lastArgs = args;
-
-    if (frameId) {
-      return frameId;
-    }
-
-    frameId = requestAnimationFrame(function () {
-      frameId = null;
-      fn.apply(undefined, _toConsumableArray(lastArgs));
-    });
-
-    return frameId;
-  };
-
-  wrapperFn.cancel = function () {
-    if (!frameId) {
-      return;
-    }
-
-    cancelAnimationFrame(frameId);
-    frameId = null;
-  };
-
-  var resultFn = wrapperFn;
-
-  return resultFn;
-};
-
-/***/ }),
-/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
@@ -18763,7 +18718,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18808,7 +18763,7 @@ var _getElementBounds2 = _interopRequireDefault(_getElementBounds);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18854,7 +18809,7 @@ exports.default = function (offset) {
 __webpack_require__(3);
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18875,7 +18830,7 @@ exports.default = function (elementBounds, viewportBounds, offset) {
 __webpack_require__(3);
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
