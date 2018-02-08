@@ -1,6 +1,6 @@
 {
   "name": "react-lazily-render",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lazily render react components",
   "keywords": [
     "react",
@@ -22,7 +22,6 @@
   ],
   "repository": "jameslnewell/react-lazily-render",
   "dependencies": {
-    "raf-schd": "^2.1.0",
     "scrollparent": "^2.0.1"
   },
   "devDependencies": {

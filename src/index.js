@@ -1,6 +1,5 @@
 // @flow
 import * as React from 'react';
-import rafSchedule from 'raf-schd';
 import scrollParent from 'scrollparent';
 import {type Bounds, type Window} from './types';
 import getViewportBounds from './utils/getViewportBounds';
@@ -24,13 +23,15 @@ export type LazilyRenderState = {
 
 export default class LazilyRender extends React.Component<LazilyRenderProps, LazilyRenderState> {
 
-  element: ?HTMLElement = undefined;
+  raf: ?number;
+  element: ?HTMLElement;
+  container: ?HTMLElement | ?Window; 
 
   state = {
     hasBeenScrolledIntoView: false
   };
 
-  get container(): ?HTMLElement | ?Window {
+  getContainer(): ?HTMLElement | ?Window {
     const container = scrollParent(this.element);
     if (container === document.scrollingElement || container === document.documentElement) {
       return window;
@@ -64,34 +65,43 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
     window.removeEventListener('resize', this.update);
   }
 
-  update = rafSchedule(() => {
-    const elementBounds = this.getElementBounds();
-    const viewportBounds = this.getViewportBounds();
-    const offsetBounds = this.getOffsetBounds();
+  update = () => {
+    cancelAnimationFrame(this.raf);
+    this.raf = requestAnimationFrame(() => {
 
-    if (!elementBounds || !viewportBounds) {
-      return;
-    }
-
-    if (isElementInViewport(elementBounds, viewportBounds, offsetBounds)) {
-      this.stopListening();
-      this.setState(
-        {
-          hasBeenScrolledIntoView: true
-        },
-        () => {
-          const {onRender} = this.props;
-          if (onRender) {
-            onRender();
+      const elementBounds = this.getElementBounds();
+      const viewportBounds = this.getViewportBounds();
+      const offsetBounds = this.getOffsetBounds();
+  
+      if (!elementBounds || !viewportBounds) {
+        return;
+      }
+  
+      if (isElementInViewport(elementBounds, viewportBounds, offsetBounds)) {
+        this.stopListening();
+        this.setState(
+          {
+            hasBeenScrolledIntoView: true
+          },
+          () => {
+            const {onRender} = this.props;
+            if (onRender) {
+              onRender();
+            }
           }
-        }
-      );
-    }
+        );
+      }
 
-  })
+    });
+  }
 
   handleMount = (element: ?HTMLElement) => {
     this.element = element;
+    if (this.element) {
+      this.container = this.getContainer();
+    } else {
+      this.container = undefined;
+    }
   }
 
   componentDidMount() {

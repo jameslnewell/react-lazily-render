@@ -1,5 +1,11 @@
 # Change log
 
+## 1.0.1
+
+- implemented a few micro optimizations
+  - remove the unnecessary library
+  - cache the container
+
 ## 1.0.0
 
 - major bump to use versioning properly
