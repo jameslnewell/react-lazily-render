@@ -18,7 +18,7 @@ npm install --save react-lazily-render
 
 ```js
 import React from 'react';
-import LazyRender from 'react-lazily-render';
+import LazilyRender from 'react-lazily-render';
 
 <div>
   ...lots of content...
