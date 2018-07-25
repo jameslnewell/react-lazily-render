@@ -7,7 +7,6 @@ module.exports = {
     path: path.resolve('./dist/example'),
     filename: './index.js'
   },
-  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -16,10 +15,6 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -33,7 +28,6 @@ module.exports = {
       title: 'react-lazily-render',
       filename: './index.html',
       template: './src/index.html',
-      // templateContent: '<div id="app"/>'
     })
   ]
 };
