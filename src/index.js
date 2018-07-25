@@ -31,9 +31,13 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
     hasBeenScrolledIntoView: false
   };
 
+  isBackCompatMode() {
+    return document.compatMode === "BackCompat";
+  }
+
   getContainer(): ?HTMLElement | ?Window {
     const container = scrollParent(this.element);
-    if (container === document.scrollingElement || container === document.documentElement) {
+    if (container === document.scrollingElement || container === document.documentElement || (!this.isBackCompatMode() && container == document.body)) {
       return window;
     } else {
       return container;

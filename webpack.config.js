@@ -7,6 +7,7 @@ module.exports = {
     path: path.resolve('./dist/example'),
     filename: './index.js'
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -15,6 +16,10 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -27,7 +32,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'react-lazily-render',
       filename: './index.html',
-      templateContent: '<div id="app"/>'
+      template: './src/index.html',
+      // templateContent: '<div id="app"/>'
     })
   ]
 };

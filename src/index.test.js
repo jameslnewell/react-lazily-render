@@ -4,6 +4,9 @@ import LazyRender from '.';
 import {__setViewportBounds} from './utils/getViewportBounds';
 import {__setElementBounds} from './utils/getElementBounds';
 
+let mockScrollParent = window;
+jest.mock('scrollparent', () => (element) => { return mockScrollParent; });
+
 jest.mock('./utils/eventListenerOptions', () => {
   return {
     passive: true
@@ -52,6 +55,15 @@ function setupElementOutOfView() {
     bottom: 1200,
     left: 1100
   });
+}
+
+let compatMode;
+function mockCompatMode(mode) {
+  compatMode = Object.getOwnPropertyDescriptor(Document.prototype, 'compatMode');
+  Object.defineProperty(document, 'compatMode', { value: mode, writable: false, configurable: true });
+}
+function unmockCompatMode() {
+  Object.defineProperty(document, 'compatMode', compatMode);
 }
 
 function wrapper(node) {
@@ -189,4 +201,35 @@ describe('LazyRender', () => {
       });
     });
   });
+
+
+  describe('Get Container', () => {
+    it('should return window when scrollparent returns body in CSS1Compat mode', () => {
+      mockCompatMode('CSS1Compat');
+      mockScrollParent = document.body;
+
+      const element = wrapper(
+        <LazyRender placeholder={placeholder} content={content}>
+          {() => children}
+        </LazyRender>
+      );
+      expect(element.instance().getContainer()).toBe(window);
+      unmockCompatMode();
+    });
+
+    it('should return body when scrollparent returns body in BackCompat mode', () => {
+      mockCompatMode('BackCompat');
+      mockScrollParent = document.body;
+
+      const element = wrapper(
+        <LazyRender placeholder={placeholder} content={content}>
+          {() => children}
+        </LazyRender>
+      );
+      expect(element.instance().getContainer()).toBe(mockScrollParent);
+
+      unmockCompatMode();
+    });
+  })
+
 });
