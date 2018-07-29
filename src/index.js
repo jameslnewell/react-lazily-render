@@ -6,6 +6,7 @@ import getViewportBounds from './utils/getViewportBounds';
 import getElementBounds from './utils/getElementBounds';
 import convertOffsetToBounds from './utils/convertOffsetToBounds';
 import isElementInViewport from './utils/isElementInViewport'
+import isBackCompatMode from './utils/isBackCompatMode'
 import eventListenerOptions from './utils/eventListenerOptions';
 
 export type LazilyRenderProps = {
@@ -31,13 +32,9 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
     hasBeenScrolledIntoView: false
   };
 
-  isBackCompatMode() {
-    return document.compatMode === "BackCompat";
-  }
-
   getContainer(): ?HTMLElement | ?Window {
     const container = scrollParent(this.element);
-    if (container === document.scrollingElement || container === document.documentElement || (!this.isBackCompatMode() && container == document.body)) {
+    if (container === document.scrollingElement || container === document.documentElement || (!isBackCompatMode() && container == document.body)) {
       return window;
     } else {
       return container;
