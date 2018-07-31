@@ -1,5 +1,9 @@
 # Change log
 
+## 1.0.2
+
+- fix scroll detection in some rare circumstances ([#5](https://github.com/jameslnewell/react-lazily-render/pull/5))
+
 ## 1.0.1
 
 - implemented a few micro optimizations
