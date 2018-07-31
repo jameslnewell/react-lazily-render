@@ -18502,7 +18502,11 @@ var _isElementInViewport = __webpack_require__(34);
 
 var _isElementInViewport2 = _interopRequireDefault(_isElementInViewport);
 
-var _eventListenerOptions = __webpack_require__(35);
+var _isBackCompatMode = __webpack_require__(35);
+
+var _isBackCompatMode2 = _interopRequireDefault(_isBackCompatMode);
+
+var _eventListenerOptions = __webpack_require__(36);
 
 var _eventListenerOptions2 = _interopRequireDefault(_eventListenerOptions);
 
@@ -18571,7 +18575,7 @@ var LazilyRender = function (_React$Component) {
     key: 'getContainer',
     value: function getContainer() {
       var container = (0, _scrollparent2.default)(this.element);
-      if (container === document.scrollingElement || container === document.documentElement) {
+      if (container === document.scrollingElement || container === document.documentElement || !(0, _isBackCompatMode2.default)() && container == document.body) {
         return window;
       } else {
         return container;
@@ -18831,6 +18835,21 @@ __webpack_require__(3);
 
 /***/ }),
 /* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+exports.default = function () {
+    return document.compatMode === "BackCompat";
+};
+
+/***/ }),
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
