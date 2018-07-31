@@ -4,6 +4,9 @@ import LazyRender from '.';
 import {__setViewportBounds} from './utils/getViewportBounds';
 import {__setElementBounds} from './utils/getElementBounds';
 
+let mockScrollParent = window;
+jest.mock('scrollparent', () => (element) => { return mockScrollParent; });
+
 jest.mock('./utils/eventListenerOptions', () => {
   return {
     passive: true
@@ -52,6 +55,15 @@ function setupElementOutOfView() {
     bottom: 1200,
     left: 1100
   });
+}
+
+let compatMode;
+function mockCompatMode(mode) {
+  compatMode = Object.getOwnPropertyDescriptor(Document.prototype, 'compatMode');
+  Object.defineProperty(document, 'compatMode', { value: mode, writable: false, configurable: true });
+}
+function unmockCompatMode() {
+  Object.defineProperty(document, 'compatMode', compatMode);
 }
 
 function wrapper(node) {
@@ -164,29 +176,93 @@ describe('LazyRender', () => {
   });
 
   describe('Event handling', () => {
+
+    let windowAddEventSpy;
+    let bodyAddEventSpy;
+    let windowRemoveEventSpy;
+    let bodyRemoveEventSpy;
+
+    beforeEach(() => {
+      windowAddEventSpy = jest.spyOn(window, 'addEventListener');
+      bodyAddEventSpy = jest.spyOn(document.body, 'addEventListener');
+      windowRemoveEventSpy = jest.spyOn(window, 'removeEventListener');
+      bodyRemoveEventSpy = jest.spyOn(document.body, 'removeEventListener');
+    });
+
     it('should use passive event listeners when available', () => {
       const element = wrapper(
-        <LazyRender placeholder={placeholder}>
+        <LazyRender>
           {() => children}
         </LazyRender>
       );
-      const instance = element.instance();
-      const addEventSpy = jest.spyOn(window, 'addEventListener');
-      const removeEventSpy = jest.spyOn(window, 'removeEventListener');
-
-      instance.startListening();
       
-      expect(addEventSpy.mock.calls[0][0]).toEqual('scroll');
-      expect(addEventSpy.mock.calls[0][2]).toEqual({
+      expect(windowAddEventSpy).toBeCalledWith('scroll', expect.anything(), {
         passive: true
       });
 
-      instance.stopListening();
+      element.unmount();
 
-      expect(removeEventSpy.mock.calls[0][0]).toEqual('scroll');
-      expect(removeEventSpy.mock.calls[0][2]).toEqual({
+      expect(windowRemoveEventSpy).toBeCalledWith('scroll', expect.anything(), {
         passive: true
       });
     });
+
+    it('should listen to the window when scrollparent returns body in CSS1Compat mode', () => {
+      mockCompatMode('CSS1Compat');
+      mockScrollParent = document.body;
+      
+      const element = wrapper(
+        <LazyRender>
+          {() => children}
+        </LazyRender>
+      );
+      
+      expect(windowAddEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
+      expect(bodyAddEventSpy).not.toBeCalledWith('scroll', expect.anything(), expect.anything());
+
+      windowAddEventSpy.mockClear();
+      bodyAddEventSpy.mockClear();
+      windowRemoveEventSpy.mockClear();
+      bodyRemoveEventSpy.mockClear();
+
+      element.unmount();
+
+      expect(windowRemoveEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
+      expect(bodyRemoveEventSpy).not.toBeCalledWith('scroll', expect.anything(), expect.anything());
+
+      unmockCompatMode();
+    });
+
+    it('should listen to the body when scrollparent returns body in BackCompat mode', () => {
+      mockCompatMode('BackCompat');
+      mockScrollParent = document.body;
+      const windowAddEventSpy = jest.spyOn(window, 'addEventListener');
+      const bodyAddEventSpy = jest.spyOn(document.body, 'addEventListener');
+      const windowRemoveEventSpy = jest.spyOn(window, 'removeEventListener');
+      const bodyRemoveEventSpy = jest.spyOn(document.body, 'removeEventListener');
+      
+      const element = wrapper(
+        <LazyRender>
+          {() => children}
+        </LazyRender>
+      );
+      
+      expect(windowAddEventSpy).not.toBeCalledWith('scroll', expect.anything(), expect.anything());
+      expect(bodyAddEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
+
+      windowAddEventSpy.mockClear();
+      bodyAddEventSpy.mockClear();
+      windowRemoveEventSpy.mockClear();
+      bodyRemoveEventSpy.mockClear();
+
+      element.unmount();
+
+      expect(windowRemoveEventSpy).not.toBeCalledWith('scroll', expect.anything(), expect.anything());
+      expect(bodyRemoveEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
+
+      unmockCompatMode();
+    }); 
+
   });
+
 });
