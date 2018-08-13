@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import {mount,shallow} from 'enzyme';
 import LazyRender from '.';
 import {__setViewportBounds} from './utils/getViewportBounds';
 import {__setElementBounds} from './utils/getElementBounds';
@@ -93,6 +93,28 @@ describe('LazyRender', () => {
         </LazyRender>
       );
       expect(wrapper.prop('className')).toEqual('my-cool-class');
+    });
+
+    describe(`when component="span"`, () => {
+      it(`should render the wrapper as <span>`, () => {
+        const wrapper = shallow(
+          <LazyRender component="span">
+            {() => <span>HelloWorld!</span>}
+          </LazyRender>
+        );
+        expect(wrapper.type()).toEqual('span');
+      });
+    });
+
+    describe(`when component="div"`, () => {
+      it(`should render the wrapper as <div>`, () => {
+        const wrapper = shallow(
+          <LazyRender component="div">
+            {() => <span>HelloWorld!</span>}
+          </LazyRender>
+        );
+        expect(wrapper.type()).toEqual('div');
+      });
     });
 
     it('should call the render fn with true when the component is visible in the viewport', () => {
@@ -195,7 +217,7 @@ describe('LazyRender', () => {
           {() => children}
         </LazyRender>
       );
-      
+
       expect(windowAddEventSpy).toBeCalledWith('scroll', expect.anything(), {
         passive: true
       });
@@ -210,13 +232,13 @@ describe('LazyRender', () => {
     it('should listen to the window when scrollparent returns body in CSS1Compat mode', () => {
       mockCompatMode('CSS1Compat');
       mockScrollParent = document.body;
-      
+
       const element = wrapper(
         <LazyRender>
           {() => children}
         </LazyRender>
       );
-      
+
       expect(windowAddEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
       expect(bodyAddEventSpy).not.toBeCalledWith('scroll', expect.anything(), expect.anything());
 
@@ -240,13 +262,13 @@ describe('LazyRender', () => {
       const bodyAddEventSpy = jest.spyOn(document.body, 'addEventListener');
       const windowRemoveEventSpy = jest.spyOn(window, 'removeEventListener');
       const bodyRemoveEventSpy = jest.spyOn(document.body, 'removeEventListener');
-      
+
       const element = wrapper(
         <LazyRender>
           {() => children}
         </LazyRender>
       );
-      
+
       expect(windowAddEventSpy).not.toBeCalledWith('scroll', expect.anything(), expect.anything());
       expect(bodyAddEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
 
@@ -261,7 +283,7 @@ describe('LazyRender', () => {
       expect(bodyRemoveEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
 
       unmockCompatMode();
-    }); 
+    });
 
   });
 

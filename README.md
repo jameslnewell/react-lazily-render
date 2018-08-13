@@ -48,6 +48,12 @@ import LazilyRender from 'react-lazily-render';
 
 The `className` applied to the wrapping element.
 
+#### component
+
+> `string | React.ComponentClass`
+
+The `tagName` of the wrapping element.
+
 ### offset
 
 > `number | {top?: number, right?: number, bottom?: number, left?: number}`
