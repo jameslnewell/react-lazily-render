@@ -1,5 +1,9 @@
 # Change log
 
+## 1.1.0
+
+- added the ability to change the wrapper component ([#6](https://github.com/jameslnewell/react-lazily-render/pull/6))
+
 ## 1.0.2
 
 - fix scroll detection in some rare circumstances ([#5](https://github.com/jameslnewell/react-lazily-render/pull/5))

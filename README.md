@@ -52,7 +52,13 @@ The `className` applied to the wrapping element.
 
 > `string | React.ComponentClass`
 
-The `tagName` of the wrapping element.
+The wrapping component.
+
+e.g. 
+```js
+<LazilyRender component="span"/>
+<LazilyRender component={MyComponent}/>
+```
 
 ### offset
 
