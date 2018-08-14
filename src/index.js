@@ -11,6 +11,7 @@ import eventListenerOptions from './utils/eventListenerOptions';
 
 export type LazilyRenderProps = {
   className?: string;
+  component?: string | React.ComponentClass;
   offset?: number | {top?: number, right?: number, bottom?: number, left?: number};
   placeholder?: React.Node;
   content?: React.Node;
@@ -26,7 +27,7 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
 
   raf: ?number;
   element: ?HTMLElement;
-  container: ?HTMLElement | ?Window; 
+  container: ?HTMLElement | ?Window;
 
   state = {
     hasBeenScrolledIntoView: false
@@ -73,11 +74,11 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
       const elementBounds = this.getElementBounds();
       const viewportBounds = this.getViewportBounds();
       const offsetBounds = this.getOffsetBounds();
-  
+
       if (!elementBounds || !viewportBounds) {
         return;
       }
-  
+
       if (isElementInViewport(elementBounds, viewportBounds, offsetBounds)) {
         this.stopListening();
         this.setState(
@@ -134,12 +135,12 @@ export default class LazilyRender extends React.Component<LazilyRenderProps, Laz
   }
 
   render() {
-    const {className} = this.props;
-    return (
-      <div ref={this.handleMount} className={className}>
-        {this.renderChildren()}
-      </div>
-    );
+    const {className, component} = this.props;
+    return React.createElement(component || 'div', {
+      ref: this.handleMount,
+      className,
+      children: this.renderChildren()
+    });
   }
 
 }
