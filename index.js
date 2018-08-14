@@ -18650,13 +18650,15 @@ var LazilyRender = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var className = this.props.className;
+      var _props2 = this.props,
+          className = _props2.className,
+          component = _props2.component;
 
-      return React.createElement(
-        'div',
-        { ref: this.handleMount, className: className },
-        this.renderChildren()
-      );
+      return React.createElement(component || 'div', {
+        ref: this.handleMount,
+        className: className,
+        children: this.renderChildren()
+      });
     }
   }]);
 
