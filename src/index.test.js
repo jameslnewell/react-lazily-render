@@ -229,6 +229,62 @@ describe('LazyRender', () => {
       });
     });
 
+    it('should use passive event listeners when available, container specified', () => {
+      const bodyAddEventSpy = jest.spyOn(document.body, 'addEventListener');
+      const bodyRemoveEventSpy = jest.spyOn(document.body, 'removeEventListener');
+
+      const element = wrapper(
+        <LazyRender scrollContainer={document.body}>
+          {() => children}
+        </LazyRender>
+      );
+
+      expect(bodyAddEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
+
+      bodyAddEventSpy.mockClear();
+      bodyRemoveEventSpy.mockClear();
+
+      element.unmount();
+
+      expect(bodyRemoveEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
+    });
+
+    it('should cleanup and setup containers accurately when container changes', () => {
+      // Aim: consumer wants to switch to a nested scroll container.
+      const innerScrollContainer = document.createElement('div', { className: 'inner-scroll-container' });
+      document.body.appendChild(innerScrollContainer);
+
+      const bodyAddEventSpy = jest.spyOn(document.body, 'addEventListener');
+      const bodyRemoveEventSpy = jest.spyOn(document.body, 'removeEventListener');
+      const containerAddEventSpy = jest.spyOn(innerScrollContainer, 'addEventListener');
+      const containerRemoveEventSpy = jest.spyOn(innerScrollContainer, 'removeEventListener');
+
+      const element = wrapper(
+        <LazyRender scrollContainer={document.body}>
+          {() => children}
+        </LazyRender>
+      );
+      
+      // Initial events should be attached to the first scroll container specified.
+      expect(bodyAddEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
+      bodyAddEventSpy.mockClear();
+
+      // Switch to the next container.
+      element.setProps({ scrollContainer: innerScrollContainer });
+      expect(element.prop('scrollContainer')).toBe(innerScrollContainer);
+
+      // Next, a cleanup should be done of the first container, and setup of the new container.
+      expect(bodyRemoveEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
+      expect(containerAddEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
+      containerAddEventSpy.mockClear();
+      bodyRemoveEventSpy.mockClear();
+
+      // Lastly, the component teardown should reference the second container.
+      element.unmount();
+      expect(containerRemoveEventSpy).toBeCalledWith('scroll', expect.anything(), expect.anything());
+      containerRemoveEventSpy.mockClear();
+    });
+
     it('should listen to the window when scrollparent returns body in CSS1Compat mode', () => {
       mockCompatMode('CSS1Compat');
       mockScrollParent = document.body;

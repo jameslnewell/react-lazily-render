@@ -91,3 +91,11 @@ Called to render something depending on whether the component has been scrolled 
 > `() => void`
 
 Called when the component becomes visible for the first time.
+
+#### scrollContainer
+
+> `HTMLElement | undefined`
+
+The container which `react-lazily-render` listens to for scroll events.
+
+This property can be used in a scenario where you want to specify your own scroll container - e.g. if the component you are rendering is asynchronously added to the DOM.
