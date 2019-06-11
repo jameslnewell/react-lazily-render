@@ -1,13 +1,16 @@
 {
   "env": {
     "es5": {
-      "presets": ["env", "react", "stage-0", "flow"]
+      "presets": ["@babel/env", "@babel/react", "@babel/flow"],
+      "plugins": ["@babel/plugin-proposal-class-properties"]
     },
     "esnext": {
-      "presets": [["env", {"modules": false}], "react", "stage-0", "flow"]
+      "presets": [["@babel/env", {"modules": false}], "@babel/react", "@babel/flow"],
+      "plugins": ["@babel/plugin-proposal-class-properties"]
     },
     "test": {
-      "presets": ["env", "react", "stage-0", "flow"]
+      "presets": ["@babel/env", "@babel/react", "@babel/flow"],
+      "plugins": ["@babel/plugin-proposal-class-properties"]
     }
   }
 }
