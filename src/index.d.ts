@@ -10,6 +10,7 @@ declare module 'react-lazily-render' {
     content?: React.ReactNode;
     children?: (render: boolean) => React.ReactNode;
     onRender?: () => void;
+    scrollContainer?: HTMLElement;
   }
 
   export default class LazilyRender extends React.Component<LazilyRenderProps, any> {
